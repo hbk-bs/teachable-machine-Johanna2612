@@ -52,4 +52,40 @@ function gotResult(results) {
 	label = results[0].label;
 	// Classifiy again!
 	classifyVideo();
+	
+	// Update character display
+	updateCharacterDisplay(label);
+	
+	// Classify again
+	classifyVideo();
 }
+
+function updateCharacterDisplay(character) {
+	const nameEl = document.getElementById('character-name');
+	const imgEl = document.getElementById('character-image');
+
+	nameEl.textContent = `Du bist ${character}!`;
+
+	const characterImages = {
+		'Galadriel': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Galadriel.jpg',
+		'Ork': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Ork.jpg',
+		'Aragorn': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Aragorn.jpg',
+		'Legolas': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Legolas.jpg',
+		'Gimli': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Gimli.jpg',
+		// weitere Charaktere hier ergänzen
+	};
+
+	if (characterImages[character]) {
+		imgEl.src = characterImages[character];
+		imgEl.style.display = 'block';
+		imgEl.alt = character;
+	} else {
+		imgEl.style.display = 'none';
+	}
+}
+
+	
+
+
+
+
