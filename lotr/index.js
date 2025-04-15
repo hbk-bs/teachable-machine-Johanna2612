@@ -9,15 +9,18 @@ let video;
 let flippedVideo;
 // To store the classification
 let label = '';
+let previousLabel = ''; // NEU: Zwischenspeicherung des letzten Labels
+
 
 // Load the model first
 function preload() {
 	classifier = ml5.imageClassifier(imageModelURL + 'model.json');
-	console.log(classifier);
+	console.log('Modell geladen:', classifier);
 }
 
 function setup() {
-	createCanvas(320, 260);
+	let canvas = createCanvas(320, 260);
+	canvas.parent('sketch'); // ← das ist der Trick!
 	// Create the video
 	video = createCapture(VIDEO);
 	video.size(320, 240);
@@ -46,15 +49,13 @@ function classifyVideo() {
 
 // When we get a result
 function gotResult(results) {
-	console.log(results);
-	// The results are in an array ordered by confidence.
-	// console.log(results[0]);
 	label = results[0].label;
-	// Classifiy again!
-	classifyVideo();
 	
-	// Update character display
-	updateCharacterDisplay(label);
+	// Nur wenn sich das Ergebnis geändert hat
+	if (label !== previousLabel) {
+		updateCharacterDisplay(label);
+		previousLabel = label;
+	}
 	
 	// Classify again
 	classifyVideo();
@@ -76,16 +77,15 @@ function updateCharacterDisplay(character) {
 	};
 
 	if (characterImages[character]) {
-		imgEl.src = characterImages[character];
-		imgEl.style.display = 'block';
+		// Animate image change
+		imgEl.classList.remove('show'); // Entferne Klasse mit voller Sichtbarkeit
+		void imgEl.offsetWidth; // Trick, um CSS-Neuberechnung zu erzwingen
+		imgEl.src = characterImages[character]; // Bildquelle setzen
+		imgEl.style.display = 'block'; // Sicherstellen, dass das Bild sichtbar ist
 		imgEl.alt = character;
+		imgEl.classList.add('show'); // Zeige das Bild mit Animation
 	} else {
 		imgEl.style.display = 'none';
 	}
 }
-
-	
-
-
-
 

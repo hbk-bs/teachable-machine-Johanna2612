@@ -1,79 +1,113 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p5.js Starter Project</title>
-    <style>
-html,
-body {
-    height: 100%;
-    background: hsl(56, 28%, 55%);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 0;
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcher LotR-Charakter bist du?</title>
+  <style>
+    html, body {
+      height: 100%;
+      background: hsl(56, 28%, 55%);
+      font-family: 'Trebuchet MS', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    main {
+      background-color: hsl(56, 28%, 55%);
+      padding: 4rem;
+      border: 4px double #4b5637;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #4b5637;
+      text-align: center;
+      font-size: 2.2em;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+
+    #sketch {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    #sketch canvas {
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        background-color: #4b5637;
 }
 
 
-h1 {
-    color: #4b5637;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    text-align: center;
-    font-size: 2.5em;
-  
-}
+    #character-result {
+      text-align: center;
+      margin-top: 1rem;
+    }
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    #character-name {
+      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
 
-}
+    #character-name {
+        color: #4b5637;
+    }
 
-main {
-    background-color: hsl(56, 28%, 55%); 
-    padding: 2rem;
-    border: 4px double #4b5637;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 800px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    #character-image {
+        width: 200px;
+        height: 250px;
+        object-fit: contain;
+        display: none;
+        transition: opacity 1s ease;
+        opacity: 0;
+    }
 
-a {
-    margin-top: 1rem;
-    color: #4b5637;
-    text-decoration: none;
-    font-weight: bold;
-}
+    #character-image.show {
+      opacity: 1;
+    }
 
-a:hover {
-    text-decoration: underline;
-    
-}
+    a {
+      margin-top: 1rem;
+      color:hsl(56, 28%, 55%);
+      text-decoration: none;
+     
+    }
 
-    </style>
+
+  </style>
 </head>
 <body>
-<main>
-    <h1> Which Lord of the Rings Character are you?</h1>
+  <main>
+    <h1>Which Lord of the Rings Character are you?</h1>
+
+    <!-- Webcam Canvas wird in den Sketch-Div gezeichnet -->
     <div id="sketch"></div>
-    <a href="index.js">souce code</a>
 
-    <div id="character-result" style="text-align: center; margin-top: 1rem;">
-        <h2 id="character-name" style="font-family: 'Cinzel Decorative', serif;"></h2>
-        <img id="character-image" src="" alt="" style="display: none; max-width: 300px; border: 3px solid #556b2f; border-radius: 12px; box-shadow: 0 0 10px #444;">
-      </div>
-      
-    
-    </main>
-		<script src="lib/ml5.1.2.1.min.js"></script>
-		<script src="lib/p5.min.js"></script>
-    <!-- <script src="lib/p5.sound.min.js"></script> -->
+    <!-- Charakter-Ausgabe -->
+    <div id="character-result">
+      <h2 id="character-name"></h2>
+      <img id="character-image" src="" alt="" />
+    </div>
 
-    <script src="index.js"></script>
+    <!-- Optional: Link zum Code -->
+    <a href="index.js">Source Code</a>
+  </main>
+
+  <script src="lib/ml5.1.2.1.min.js"></script>
+  <script src="lib/p5.min.js"></script>
+  <script src="index.js"></script>
 </body>
 </html>
+
+
