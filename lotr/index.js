@@ -31,15 +31,9 @@ function setup() {
 }
 
 function draw() {
-	background(0);
 	// Draw the video
 	image(video, 0, 0);
 
-	// Draw the label
-	fill(255);
-	textSize(16);
-	textAlign(CENTER);
-	text(label, width / 2, height - 4);
 }
 
 // Get a prediction for the current video frame
@@ -54,6 +48,7 @@ function gotResult(results) {
 	// Nur wenn sich das Ergebnis geändert hat
 	if (label !== previousLabel) {
 		updateCharacterDisplay(label);
+		document.getElementById('video-label').textContent = label;
 		previousLabel = label;
 	}
 	
