@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcher LotR-Charakter bist du?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Startseite</title>
   <style>
     html, body {
       height: 100%;
@@ -34,78 +34,28 @@
       text-align: center;
       font-size: 2.2em;
       margin-bottom: 1rem;
-      flex-shrink: 0;
     }
 
-    #sketch {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 1rem;
+    button {
+      background-color: #4b5637;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
-    #sketch canvas {
-        border-radius: 12px;
-        margin-bottom: 1rem;
-       
-}
-
-
-    #character-result {
-      text-align: center;
-      margin-top: 1rem;
+    button:hover {
+      background-color: #3a452d;
     }
-
-    #character-name {
-      font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    #character-name {
-        color: #4b5637;
-    }
-
-    #character-image {
-        width: 200px;
-        height: 250px;
-        object-fit: contain;
-        display: none;
-        transition: opacity 1s ease;
-        opacity: 0;
-    }
-
-    #character-image.show {
-      opacity: 1;
-    }
-
-
-    a {
-      margin-top: 1rem;
-      color:hsl(56, 28%, 55%);
-      text-decoration: none;
-     
-    }
-
-
   </style>
 </head>
 <body>
   <main>
-    <h1>Which Lord of the Rings Character are you?</h1>
-
-    <!-- Webcam Canvas wird in den Sketch-Div gezeichnet -->
-    <div id="sketch"></div>
-
-
-    <!-- Charakter-Ausgabe -->
-    <div id="character-result">
-      <h2 id="character-name"></h2>
-      <img id="character-image" src="" alt="" />
-    </div>
-
-
-  <script src="lib/ml5.1.2.1.min.js"></script>
-  <script src="lib/p5.min.js"></script>
-  <script src="index.js"></script>
+    <h1>Willkommen zur Herr der Ringe Charakteranalyse</h1>
+    <button onclick="location.href='main.html'">Starte jetzt</button>
+  </main>
 </body>
 </html>
-
-

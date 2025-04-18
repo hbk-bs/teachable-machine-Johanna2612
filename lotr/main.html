@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="index.js"></script>
+  <title>Analyse läuft...</title>
+  <style>
+    html, body {
+      height: 100%;
+      background: hsl(56, 28%, 55%);
+      font-family: 'Trebuchet MS', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    main {
+      text-align: center;
+      background-color: hsl(56, 28%, 55%);
+      padding: 2rem;
+      border: 4px double #4b5637;
+      border-radius: 15px;
+      width: auto;
+      min-width: 400px; /* Mindestbreite */
+      max-width: 700px; /* Maximale Breite */
+      margin: 0 auto; /* Zentriere das Element */
+
+    h1 {
+      color: #4b5637;
+      margin-bottom: 2rem;
+    }
+
+    video {
+      border-radius: 12px !important;/* Runde Ecken */
+      border: 2px solid #4b5637; /* Rahmen */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten */
+      width: 320px; /* Optional: Breite festlegen */
+      height: auto; /* Höhe automatisch anpassen */
+    }
+
+    .progress-bar {
+      width: 450px;
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 15px;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+    }
+
+    .progress {
+      height: 20px;
+      width: 0%;
+      background-color: #4b5637;
+      transition: width 3s ease;
+    }
+
+    .phase {
+      color: #4b5637;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      text-align: center; /* Text zentrieren */
+      white-space: nowrap; /* Verhindert Zeilenumbrüche */
+      overflow: hidden; /* Versteckt überfließenden Text */
+    }
+
+    .result-button {
+      display: none;
+      margin-top: 2rem;
+      background-color: #4b5637;
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .result-button:hover {
+      background-color: #3a452d;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div id="webcam-container"></div>
+    <canvas id="canvas" style="display: none;"></canvas>
+    <div id="sketch"></div>
+    <div id="video-label"></div>
+    <h1>Analyse läuft...</h1>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>
+    <div class="phase" id="phase-text">Phase 1: Daten werden gesammelt</div>
+    <button class="result-button" id="result-button" onclick="location.href='result.html'">Dein Ergebnis</button>
+  </main>
+
+  <script>
+    const phases = [
+      "Phase 1: Daten werden gesammelt",
+      "Phase 2: Daten werden nach Mittelerde geschickt",
+      "Phase 3: Daten werden verglichen",
+      "Phase 4: Es gibt Probleme mit der auenländischen Bürokratie",
+      "Phase 5: Ergebnis steht fest"
+    ];
+
+    const progressBar = document.getElementById("progress");
+    const phaseText = document.getElementById("phase-text");
+    const resultButton = document.getElementById("result-button");
+
+    let currentPhase = 0;
+
+    function updatePhase() {
+      if (currentPhase < phases.length) {
+        phaseText.textContent = phases[currentPhase];
+        progressBar.style.width = `${(currentPhase + 1) * 20}%`;
+        currentPhase++;
+        setTimeout(updatePhase, 6000); // 6 Sekunden pro Phase
+      } else {
+        phaseText.textContent = "Analyse abgeschlossen!";
+        resultButton.style.display = "inline-block";
+      }
+    }
+
+    // Starte die Phasen
+    updatePhase();
+  
+  </script>
+  <script src="lib/ml5.1.2.1.min.js"></script>
+  <script src="lib/p5.min.js"></script>
+  <script src="index.js"></script>  
+  
+</body>
+</html>

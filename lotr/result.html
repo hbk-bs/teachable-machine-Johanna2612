@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dein Ergebnis</title>
+  <style>
+     html, body {
+      height: 100%;
+      display: flex; /* Aktiviert Flexbox */
+      display: flex; /* Aktiviert Flexbox */
+      display: flex; /* Aktiviert Flexbox */
+      justify-content: center; /* Zentriert den Inhalt horizontal */
+      align-items: center; /* Zentriert den Inhalt vertikal */
+      background: hsl(56, 28%, 55%);
+      font-family: 'Trebuchet MS', sans-serif;
+      margin: 0;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: auto; /* Nimmt die gesamte Höhe des Viewports ein */
+      text-align: center;
+      background-color: hsl(56, 28%, 55%);
+      padding: 2rem;
+      border: 4px double #4b5637;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 500px;
+    }
+
+    img {
+      max-width: 300px; /* Maximale Breite */
+      max-height: 300px; /* Maximale Höhe */
+      object-fit: cover; /* Zuschneiden, um die Größe zu füllen */
+      border-radius: 12px; /* Optional: Abgerundete Ecken */
+      margin-bottom: 1rem; /* Abstand zwischen Bild und Text */
+    }
+
+    h1 {
+      color: #4b5637;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      color: #4b5637;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    button {
+  background-color: #4b5637;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 2rem; 
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3a452d;
+}
+
+  </style>
+</head>
+<body>
+  <main>
+    <h1 id="result-text">Glückwunsch, du bist</h1>
+    <img id="character-image" src="" alt="Charakterbild" />
+    <p id="character-description" style="display: none;"></p>
+    <button id="restart-button" onclick="location.href='index.html'">Nochmal versuchen</button>
+  </main>
+
+  <script>
+    // Abrufen des Ergebnisses aus dem localStorage
+    const character = localStorage.getItem("character");
+
+    // Charakterbilder
+    const characterImages = {
+      'Galadriel': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Galadriel.jpg',
+      'Ork': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Ork.jpg',
+      'Aragorn': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Aragorn.jpg',
+      'Legolas': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Legolas.jpg',
+      'Gimli': 'https://hbk-bs.github.io/the-archives-Johanna2612/assets/images/Gimli.jpg',
+      // Weitere Charaktere hier ergänzen
+    };
+
+    // Charaktertexte
+    const characterDescriptions = {
+    'Galadriel': 'Galadriel ist eine mächtige Elbin und Herrscherin von Lothlórien. Sie ist weise, gütig und besitzt große magische Kräfte.',
+    'Ork': 'Orks sind grausame Kreaturen, die von Sauron erschaffen wurden. Sie sind bekannt für ihre Brutalität und ihren Hass auf alles Gute.',
+    'Aragorn': 'Aragorn ist der rechtmäßige König von Gondor. Er ist ein mutiger Krieger und ein treuer Anführer.',
+    'Legolas': 'Legolas ist ein Elb aus dem Waldlandreich. Er ist ein meisterhafter Bogenschütze und ein loyaler Gefährte.',
+    'Gimli': 'Gimli ist ein Zwerg aus den Ered Luin. Er ist tapfer, stur und ein treuer Freund, besonders von Legolas.',
+    };
+
+    // Ergebnis anzeigen
+    const resultText = document.getElementById("result-text");
+const characterImage = document.getElementById("character-image");
+const descriptionEl = document.getElementById("character-description");
+
+if (character && characterImages[character]) {
+  resultText.textContent = `Glückwunsch, du bist ${character}!`;
+  characterImage.src = characterImages[character];
+  characterImage.style.display = 'block'; // Bild anzeigen
+  descriptionEl.textContent = characterDescriptions[character];
+  descriptionEl.style.display = 'block'; // Beschreibung anzeigen
+} else {
+  resultText.textContent = "Kein Ergebnis gefunden.";
+  characterImage.style.display = 'none'; // Bild ausblenden
+  descriptionEl.style.display = 'none'; // Beschreibung ausblenden
+}
+  </script>
+</body>
+</html>
