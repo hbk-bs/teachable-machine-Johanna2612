@@ -11,8 +11,9 @@
       background: hsl(56, 28%, 55%);
       font-family: 'Trebuchet MS', sans-serif;
       display: flex;
-      justify-content: center;
-      align-items: center;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
       margin: 0;
     }
 
@@ -32,11 +33,11 @@
       margin-bottom: 2rem;
     }
 
-    video {
-      border-radius: 12px !important;/* Runde Ecken */
-      border: 2px solid #4b5637; /* Rahmen */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Schatten */
-      width: 320px; /* Optional: Breite festlegen */
+    .styled-video {
+      border-radius: 12px; /* Runde Ecken */
+      border: 2px solid #4b5637; /* Optional: Rahmen */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Schatten */
+      width: 320px; /* Breite des Videos */
       height: auto; /* Höhe automatisch anpassen */
     }
 
@@ -81,6 +82,8 @@
     .result-button:hover {
       background-color: #3a452d;
     }
+
+
   </style>
 </head>
 <body>
@@ -117,7 +120,7 @@
         phaseText.textContent = phases[currentPhase];
         progressBar.style.width = `${(currentPhase + 1) * 20}%`;
         currentPhase++;
-        setTimeout(updatePhase, 6000); // 6 Sekunden pro Phase
+        setTimeout(updatePhase, 5000); // 5 Sekunden pro Phase
       } else {
         phaseText.textContent = "Analyse abgeschlossen!";
         resultButton.style.display = "inline-block";

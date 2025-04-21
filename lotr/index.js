@@ -24,6 +24,10 @@ function setup() {
 	video.size(320, 240);
 	video.hide();
 
+	console.log(video); // Überprüfe, ob das Video-Element korrekt erstellt wurde
+
+// Füge eine Klasse zum Video hinzu
+	video.class('styled-video');
 
 	// Start classifying
 	classifyVideo();
